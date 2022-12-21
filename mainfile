@@ -1,0 +1,27 @@
+#include <iostream>
+#include <cmath>
+#include <string>
+
+using namespace std;
+
+double func_in(double x){
+    return (x);
+}
+
+double increment_increase(double increment, double begin, double end){
+    double sum = 0;
+    for(double i=begin; i<=end; i+=increment){
+        sum += func_in(i);
+    }
+    double factor = 1/increment;
+    return sum/factor;
+}
+
+int main()
+{
+    string inc;
+    cin >> inc;
+    double increment = stod(inc);
+    cout << increment_increase(increment, 0.0, 5.0);
+    return 0;
+}
