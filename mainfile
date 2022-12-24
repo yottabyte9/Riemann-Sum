@@ -17,11 +17,19 @@ double increment_increase(double increment, double begin, double end){
     return sum/factor;
 }
 
+double ask_user(string prompt){
+    string value_string;
+    cout << prompt;
+    cin >> value_string;
+    double value = stod(value_string);
+    return value;
+}
+
 int main()
 {
-    string inc;
-    cin >> inc;
-    double increment = stod(inc);
-    cout << increment_increase(increment, 0.0, 5.0);
+    double increment = ask_user("increment: ");
+    double start_v = ask_user("start: ");
+    double end_v = ask_user("end: ");
+    cout << "answer: " << increment_increase(increment, start_v, end_v);
     return 0;
 }
