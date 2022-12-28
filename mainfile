@@ -1,17 +1,26 @@
 #include <iostream>
 #include <cmath>
 #include <string>
+#include <vector>
 
 using namespace std;
 
-double func_in(double x){
-    return (x);
+double func_in(double x, vector<string> input_vector){
+    double total = 0;
+    for(int i = 0; i < input_vector.size(); i++){
+        if(input_vector[i] == "sin"){
+            total = sin(x);
+        }
+        //a bunch of conditionals to check which function it is, then apply it to vec[i]
+        //update total with the after effect.
+    }
+    return total;
 }
 
-double increment_increase(double increment, double begin, double end){
+double increment_increase(double increment, double begin, double end, vector<string> input_vector){
     double sum = 0;
     for(double i=begin; i<=end; i+=increment){
-        sum += func_in(i);
+        sum += func_in(i, input_vector);
     }
     double factor = 1/increment;
     return sum/factor;
@@ -30,6 +39,17 @@ int main()
     double increment = ask_user("increment: ");
     double start_v = ask_user("start: ");
     double end_v = ask_user("end: ");
-    cout << "answer: " << increment_increase(increment, start_v, end_v);
+    
+    vector<string> input_vector;
+    string value;
+    cout << "function: ";
+    cin >> value;
+    while(value != "end"){
+        input_vector.push_back(value);
+        cout << "function: ";
+        cin >> value;
+    }
+    
+    cout << "answer: " << increment_increase(increment, start_v, end_v, input_vector);
     return 0;
 }
